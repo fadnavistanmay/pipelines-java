@@ -19,20 +19,20 @@ steps:
     path: $(GRADLE_USER_HOME)
   displayName: Gradle build cache
 
-#- script: |
-#    ./gradlew --build-cache build
-    # stop the Gradle deamon to ensure no files are left open, imacting the save cache task.
-#    ./gradlew --stop
-#  displayName: build
+- script: |
+    ./gradlew --build-cache build
+   # stop the Gradle deamon to ensure no files are left open, imacting the save cache task.
+    ./gradlew --stop
+  displayName: build
 
-- task: Gradle@2
-  inputs:
-    workingDirectory: ''
-    gradleWrapperFile: 'gradlew'
-    gradleOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.8'
-    jdkArchitectureOption: 'x64'
-    publishJUnitResults: true
-    testResultsFiles: '**/TEST-*.xml'
-    tasks: 'build'
+#- task: Gradle@2
+#  inputs:
+#    workingDirectory: ''
+#    gradleWrapperFile: 'gradlew'
+#    gradleOptions: '-Xmx3072m'
+#    javaHomeOption: 'JDKVersion'
+#    jdkVersionOption: '1.8'
+#    jdkArchitectureOption: 'x64'
+#    publishJUnitResults: true
+#    testResultsFiles: '**/TEST-*.xml'
+#    tasks: 'build'
