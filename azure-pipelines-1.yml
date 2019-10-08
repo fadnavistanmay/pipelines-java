@@ -21,7 +21,7 @@ steps:
 
 - script: |
     ./gradlew --build-cache build
-   # stop the Gradle deamon to ensure no files are left open, imacting the save cache task.
+    # stop the Gradle deamon to ensure no files are left open, imacting the save cache task.
     ./gradlew --stop
   displayName: build
 
