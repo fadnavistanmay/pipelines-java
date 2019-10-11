@@ -1,0 +1,14 @@
+steps:
+- task: CacheBeta@1
+  inputs:
+    key: $(CACHE_KEY)
+    path: $(MAVEN_CACHE_FOLDER)
+    cacheHitVar: CACHE_RESTORED
+  displayName: Cache Mevn local repo
+
+- script: mvn install -B -e
+  displayName: Install
+  condition: ne(variables.CACHE_RESTORED, 'true')
+
+- script: mvn package
+  displayName: Build
