@@ -24,8 +24,8 @@ stages:
 variables:
   MAVEN_CACHE_FOLDER: $(Pipeline.Workspace)/.m2/repository
   MAVEN_OPTS: '-Dmaven.repo.local=$(MAVEN_CACHE_FOLDER)'
-  CACHE_KEY: maven2 | $(Build.BuildId) | $(Agent.OS) | **/pom.xml
-  CACHE_RESTOREKEY: maven2 | $(Build.BuildId)
+  CACHE_KEY: maven | $(Build.BuildId) | $(Agent.OS) | **/pom.xml
+  CACHE_RESTOREKEY: maven | $(Build.BuildId)
 
 #steps:
 #
