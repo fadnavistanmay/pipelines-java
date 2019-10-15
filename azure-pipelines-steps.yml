@@ -3,6 +3,7 @@ steps:
   inputs:
     key: $(CACHE_KEY)
     path: $(MAVEN_CACHE_FOLDER)
+    restoreKey: $(CACHE_RESTOREKEY)
     cacheHitVar: CACHE_RESTORED
   displayName: Cache Mevn local repo
 
