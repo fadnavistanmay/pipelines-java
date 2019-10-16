@@ -15,12 +15,6 @@ stages:
   jobs:
   - template: azure-pipelines-jobs.yml
 
-- stage: secondrun
-  dependsOn: firstrun
-  displayName: 'Cached'
-  jobs:
-  - template: azure-pipelines-jobs.yml
-
 - stage: firstruntar
   displayName: 'Empty Cache Tar'
   variables:
@@ -29,7 +23,14 @@ stages:
   jobs:
   - template: azure-pipelines-jobs.yml
 
+- stage: secondrun
+  dependsOn: firstrun
+  displayName: 'Cached'
+  jobs:
+  - template: azure-pipelines-jobs.yml
+
 - stage: secondruntar
+  dependsOn: firstruntar
   displayName: 'Cached tar'
   variables:
     AZP_CACHING_TAR: 'true'
