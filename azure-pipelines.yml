@@ -21,11 +21,28 @@ stages:
   jobs:
   - template: azure-pipelines-jobs.yml
 
+- stage: firstruntar
+  displayName: 'Empty Cache Tar'
+  variables:
+    AZP_CACHING_TAR: 'true'
+    CACHE_PACK: tar
+  jobs:
+  - template: azure-pipelines-jobs.yml
+
+- stage: secondruntar
+  displayName: 'Cached tar'
+  variables:
+    AZP_CACHING_TAR: 'true'
+    CACHE_PACK: tar
+  jobs:
+  - template: azure-pipelines-jobs.yml
+
 variables:
   MAVEN_CACHE_FOLDER: $(Pipeline.Workspace)/.m2/repository
   MAVEN_OPTS: '-Dmaven.repo.local=$(MAVEN_CACHE_FOLDER)'
-  CACHE_KEY: maven | $(Build.BuildId) | $(Agent.OS) | **/pom.xml
+  CACHE_KEY: maven | $(Build.BuildId) | $(Agent.OS) | $(CACHE_PACK) | **/pom.xml
   CACHE_RESTOREKEY: maven | $(Build.BuildId)
+  system.debug: true
 
 #steps:
 #
