@@ -14,4 +14,4 @@ steps:
 - script: mvn package
   displayName: Build
 
-- script: echo "<!--Your comment-->" >> pom.xml
+#- script: echo "<!--Your comment-->" >> pom.xml
