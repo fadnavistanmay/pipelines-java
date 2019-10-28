@@ -43,6 +43,7 @@ variables:
   MAVEN_OPTS: '-Dmaven.repo.local=$(MAVEN_CACHE_FOLDER)'
   CACHE_KEY: maven | $(Build.BuildId) | $(Agent.OS) | $(CACHE_PACK) | **/pom.xml
   CACHE_RESTOREKEY: maven | $(Build.BuildId)
+                    maven
   system.debug: true
 
 #steps:
